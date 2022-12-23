@@ -26,3 +26,65 @@
   background-size: cover;
   background-position: center;
 }
+
+
+.search-form {
+  
+  background-color: blueviolet;
+
+  padding: 15px;
+  width: 100%;
+  text-align: center;
+  position: fixed;
+}
+body {
+  position: relative;
+  // padding-top: 50px;
+}
+
+.list {
+  list-style: none;
+}
+
+.container {
+    padding-top: 100px;
+    // display: flex;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+
+  padding: 15px;
+}
+
+ .is-hidden {
+    position: absolute;
+      white-space: nowrap;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      border: 0;
+      padding: 0;
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      margin: -1px;
+ }
+
+ .load-more {
+  text-align: center;
+  padding: 7px;
+  height: 40px;
+  // margin-bottom: 20px;
+  // margin: 12px auto 1÷6px auto;
+  margin-right: 50%;
+ 
+ }
+
+ .container-btn {
+  display: flex;
+justify-content: center;
+
+
+ }
