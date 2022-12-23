@@ -1,5 +1,5 @@
 export
-    const renderImgsListimages = ({webformatURL, tags, likes, views, comments, downloads, largeImageURL}) => {
+    const createImgList = ({webformatURL, tags, likes, views, comments, downloads, largeImageURL}) => {
  
     return `<li class="item-card list">
 <a  class="simplelightbox" href="${largeImageURL}"> 

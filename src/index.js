@@ -1,13 +1,13 @@
-// import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 import './sass/index.scss'
 import Notiflix from 'notiflix';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import { fetchApi } from './js/fetch';
-// import NewsApi from './js/fetch';
 
-import { renderImgsListimages } from "././template/cards";
-// import cardPhoto from './template/cards.hbs'
+
+import { createImgList } from "././template/cards";
+
 
 const refs = {
     form: document.querySelector('.search-form'),
@@ -27,7 +27,7 @@ refs.btnLoadMore.addEventListener('click', onLoad);
 const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionDelay: 250,
-    scrollZoom: false,
+  scrollZoom: false,
   captions: true,
 });
 
@@ -36,7 +36,8 @@ async function onSearch(e) {
 
     //  newApi.query = e.currentTarget.elements.searchQuery.value.trim();
     searchQuery = e.currentTarget.elements.searchQuery.value.trim();
-page = 1;
+
+    page = 1;
     if (searchQuery.length === 0) return Notiflix.Notify.failure('Sorry, error');
      
 
@@ -69,19 +70,10 @@ function renderingCard(data) {
         return;
     }
 
-    // if (data.totalHits === 0) {
-    //     refs.gallery.innerHTML = '';
-    //     Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
-    //     refs.btnLoadMore.classList.add('is-hidden');
-    //     //   endCollectionText.classList.add('is-hidden');
-    //     return;
-            
-    // }
-    
 
    
         Notiflix.Notify.success(`Hooray! We found ${data.totalHits}images`);
-        const cardsTemplate = data.hits.map(card => renderImgsListimages(card));
+        const cardsTemplate = data.hits.map(card => createImgList(card));
         refs.gallery.insertAdjacentHTML('beforeend', cardsTemplate.join(''));
         
 
@@ -93,20 +85,12 @@ function renderingCard(data) {
     
 
 }
-    
-    
-    //  }
-//    console.log(data.totalHits);
-
 
 
 async function onLoad(e) {    
     page += 1;
     await fetchApi(searchQuery,page,per_page).then(renderingCard);
 };
-// function error(er) {
-//     return Notiflix.Notify.failure('Sorry we cant load pictures. Try again!');
-// }
 
 
 
